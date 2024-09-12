@@ -30,6 +30,8 @@ void createPyramid(int size){
 	}
 }
 
+// createPyramidReverse function
+
 void createPyramidReverse(int size){
 
 	for(int i = size-1; i >= 0 ;i--){
@@ -58,6 +60,8 @@ int main(){
 	createPyramid(7);
 
 	printf("\n");
+
+	// call the createPyramidReverse function
 
 	createPyramidReverse(7);
 
