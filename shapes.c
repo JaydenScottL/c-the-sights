@@ -55,12 +55,14 @@ void createPyramidReverse(int size){
 
 int main(){
 
-	// call the createPyramid function 
+	
 
 	int size;
 
 	printf("Enter a number: ");
 	scanf("%d",&size);
+
+	// call the createPyramid function 
 
 	createPyramid(size);
 

@@ -1,0 +1,136 @@
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+
+void squareCreate(char charString[], int shapeSize, size_t stringSize){
+
+    if(stringSize == 0){
+        charString = "*";
+        stringSize = 1;
+    }
+
+    printf("\n");
+
+    int index = 0;
+    
+    
+    for(int i = 0; i < shapeSize;i++){
+
+        if(i == 0 || i == shapeSize -1){
+            for(int j = 0; j < shapeSize;j++){
+                printf("%c",charString[index % stringSize]);
+                index++;
+            }
+        }else{
+
+            printf("%c",charString[index % stringSize]);
+
+            index++;
+                
+            for(int j = 0; j < shapeSize - 2; j++){
+                
+                printf(" ");
+            }
+
+            printf("%c",charString[index % stringSize]);
+
+            index++;
+        }
+
+        printf("\n");
+    }
+
+    printf("\n");
+
+}
+
+void emptyDiamond(char charString[], int shapeSize, size_t stringSize){
+
+
+    if(stringSize == 0){
+        charString = "*";
+        stringSize = 1;
+    }
+
+    int index = 0;
+
+	for(int i =0; i< shapeSize;i++){
+
+		for(int k = 0;k < shapeSize - i ;k++){
+			
+            printf("%c",charString[index % stringSize]);
+            index++;
+		}
+
+		for(int j = 0;j < i*2 ;j++){
+			printf(" ");
+		}
+
+        for(int k = 0;k < shapeSize - i ;k++){
+			
+            printf("%c",charString[index % stringSize]);
+            index++;
+		}
+
+        if(i != shapeSize -1 ){
+		    printf("\n");
+        }
+
+	}
+
+    for(int i = shapeSize; i >= 0 ;i--){
+
+		for(int k = 0;k < shapeSize - i;k++){
+            printf("%c",charString[index % stringSize]);
+            index++;
+		}
+
+		for(int j = 0;j < i*2;j++){
+			printf(" ");
+		}
+
+        for(int k = 0;k < shapeSize - i;k++){
+            printf("%c",charString[index % stringSize]);
+            index++;
+		}
+
+		printf("\n");
+
+	}
+}
+
+int main(int argc, char *argv[]){
+
+    if(argc < 4){
+        printf("Need at least 3 arguments\n");
+        return 0;
+    }
+
+
+    if(strlen(argv[1]) > 0 && atoi(argv[3]) > 0){
+
+        if(strcmp(argv[1],"square") == 0){
+
+            printf("Creating square with input \"%s\" and size %d\n", argv[1],atoi(argv[2]));
+        
+            squareCreate(argv[2],atoi(argv[3]),strlen(argv[2]));
+        
+        }
+
+        else if(strcmp(argv[1],"diamond") == 0){
+            printf("Creating diamond with input \"%s\" and size %d\n", argv[1],atoi(argv[2]));
+        
+            emptyDiamond(argv[2],atoi(argv[3]),strlen(argv[2]));
+        } else if(strcmp(argv[1],"both") == 0){
+            printf("Creating diamond and square with input \"%s\" and size %d\n", argv[1],atoi(argv[2]));
+            squareCreate(argv[2],atoi(argv[3]),strlen(argv[2]));
+            emptyDiamond(argv[2],atoi(argv[3]),strlen(argv[2]));
+        }else{
+            printf("\"%s\" is not a valid shape. Options are square, diamond, both.",argv[1]);
+        }
+    } else{
+        printf("Program requires 3 arguments: shape (string), text (string), size (int). Options for shape are square, diamond, both.");
+    }
+
+    return 0;
+}
