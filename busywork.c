@@ -2,6 +2,10 @@
 #include <string.h>
 #include <stdlib.h>
 
+/*
+Name: Jayden LeCorps
+*/
+
 // creates a square with user input
 
 void squareCreate(char charString[], int shapeSize, size_t stringSize){
