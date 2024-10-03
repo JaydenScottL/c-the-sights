@@ -52,7 +52,7 @@ int main(int argc, char *argv[]){
             *end = '\0';
             strcpy(line, start);
 
-            char sub[800];
+            char sub[4096];
             strncpy(sub,line + 11,800);
             strcpy(s[index].room_name, sub);
         }
@@ -73,7 +73,7 @@ int main(int argc, char *argv[]){
             *end = '\0';
             strcpy(line, start);
 
-            char sub[4000];
+            char sub[4096];
             strncpy(sub,line + 18,4000);
 
             strcpy(s[index].room_description, sub);
