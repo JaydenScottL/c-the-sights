@@ -81,7 +81,17 @@ int main(int argc, char *argv[]){
 
         // allocate space for next struct room
         if(op == 3){
-            s = realloc(s,(1 + count) * sizeof(room));
+            room *temp = realloc(s,(1 + count) * sizeof(room));
+
+            // check if realloc was successful
+            if(temp != NULL){
+                s = temp;
+            }else{
+                free(s);
+                printf("Space could not be allocated");
+                return 0;
+            }
+
             index = (count + 1)/4;
         }
 
